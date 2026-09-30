@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <b:if cond='data:blog.title == "Story of Algorithm"'>
+    <!-- Use this if condition to check goole analytics or ads should be run in Blogger template. If the blog title is not set, then the analytics or ads code will not be executed. This is a simple way to prevent running analytics or ads on a blog that is still in development or has not been properly configured. -->
+    </b:if>
+    <title><data:blog.pageTitle/></title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta name='language' content='en'/>
+    <meta name='robots' content='index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'/>
+    <meta expr:content='data:blog.pageTitle' name='title'/>
+    <meta expr:content='data:blog.author.name' name='author'/>
+    <meta name='theme-color' content='#e95454'/>
+    <meta expr:content='data:blog.url' property='og:url'/>
+    <meta content='website' property='og:type'/>
+    <meta expr:content='data:blog.title' property='og:site_name'/>
+    <b:if cond='data:blog.pageType == "item"'>
+        <meta expr:content='data:view.description.escaped' name='description'/>
+        <meta expr:content='data:blog.pageName' property='og:title'/>
+        <meta expr:content='data:blog.pageName' name='twitter:title'/>
+        <meta expr:content='data:view.description.escaped' property='og:description'/>
+        <meta expr:content='data:view.description.escaped' name='twitter:description'/>
+    <b:else/>
+        <meta expr:content='data:view.description.escaped' name='description'/>
+        <meta expr:content='data:blog.pageTitle' property='og:title'/>
+        <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+        <meta expr:content='data:view.description.escaped' property='og:description'/>
+        <meta expr:content='data:view.description.escaped' name='twitter:description'/>
+    </b:if>
+    <!-- Add images for social media sharing -->
+    <meta content='' property='og:image'/>
+    <meta content='' name='twitter:image'/>
+    <meta name='twitter:card' content='summary_large_image'/>
+    <meta name='twitter:site' content='@storyofalgo'/>
+    <link rel='canonical' expr:href='data:blog.url'/>
+    <link rel='icon' type='image/x-icon' href=''/>
+    <link rel='preconnect' href='https://fonts.googleapis.com'/>
+    <link rel='preconnect' href='https://fonts.gstatic.com'/>
+    <link href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Merriweather:wght@700&amp;display=swap' rel='stylesheet'/>
+    <b:skin><![CDATA[
+    /* Theme variables */
+    :root {
+        --highcolor: #e95454;
+        --fontcolor: #1f2937;
+        --headercolor: #111827;
+        --mutedcolor: #6b7280;
+        --surfacecolor: #ffffff;
+    }
+
+    /* Base page styling */
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-size: 17px;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+        line-height: 1.7;
+        color: var(--fontcolor);
+        background-color: var(--surfacecolor);
+    }
+
+    pre {
+        margin: 0;
+        padding: 0;
+        tab-size: 4;
+        white-space: pre;
+    }
+
+    /* Link and typography styles */
+    a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: var(--highcolor);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Merriweather', serif;
+        margin: 0;
+        padding: 0;
+        color: var(--headercolor);
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+    }
+
+    #blog-pager a {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--highcolor);
+    }
+
+    h1,h2 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    h4 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    /* Main layout containers */
+    header, #social-media, main, footer {
+        margin-left: auto;
+        margin-right: auto;
+        width: min(1104px, 100%);
+        max-width: 1104px;
+    }
+
+    header {
+        font-family: 'Merriweather', serif;
+        font-size: 36px;
+        justify-content: center;
+        text-align: center;
+        color: var(--highcolor);
+        border-bottom: 4px solid var(--highcolor);
+    }
+
+    main {
+        display: flex;
+        gap: 40px;
+        min-height: 100vh;
+    }
+
+    section {
+        width: 728px;
+    }
+
+    article {
+        margin-bottom: 50px;
+    }
+
+    .post-date {
+        margin: 8px 0 18px;
+        font-size: 12px;
+        line-height: 1.4;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--mutedcolor);
+    }
+
+    .post-date .post-date-icon {
+        color: var(--highcolor);
+        margin-right: 6px;
+    }
+
+    /* Sidebar and widget styles */
+    aside {
+        width: 336px;
+        font-size: 15px;
+        color: var(--fontcolor);
+    }
+
+    .side-bar {
+        margin: 0 0 15px;
+    }
+
+    .side-bar h3 {
+        margin: 0 0 14px;
+    }
+
+    aside ul {
+        margin: 0;
+    }
+
+    .download-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0 18px;
+        padding: 10px 18px;
+        border: 1px solid var(--highcolor);
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(233, 84, 84, 0.12), rgba(233, 84, 84, 0.04));
+        color: var(--highcolor);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: all 0.25s ease;
+        box-shadow: 0 6px 18px rgba(233, 84, 84, 0.12);
+    }
+
+    .download-link:hover {
+        color: var(--surfacecolor);
+        background: linear-gradient(135deg, var(--highcolor), #d54a4a);
+        box-shadow: 0 10px 24px rgba(233, 84, 84, 0.22);
+        transform: translateY(-1px);
+    }
+
+    /* Social media icons */
+    #social-media {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+    }
+
+    #social-media > span {
+        display: flex;
+        gap: 10px;
+    }
+
+    #social-media a:hover {
+        color: #fff;
+    }
+
+    .fa {
+        padding: 7px;
+        width: 60px;
+        box-sizing: border-box;
+        text-align: center;
+        text-decoration: none;
+        color: var(--surfacecolor);
+    }
+
+    .fa svg {
+        fill: currentColor;
+        margin: auto;
+    }
+
+    /* Footer and search field */
+    footer {
+        padding: 25px 0;
+        margin-top: auto;
+        text-align: center;
+        font-size: 15px;
+        color: var(--headercolor);
+        border-top: 1px solid var(--highcolor);
+    }
+
+    #usearch {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 12px 16px;
+        font-size: 15px;
+        border: 2px solid var(--highcolor);
+        border-radius: 8px;
+        background: var(--surfacecolor);
+        color: var(--fontcolor);
+        font-family: inherit;
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #uform {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #usearch:focus {
+        outline: none;
+        border-color: var(--highcolor);
+        box-shadow: 0 0 0 3px rgba(245, 106, 106, 0.15);
+    }
+
+    #usearch::placeholder {
+        color: #999;
+    }
+
+    #usearch:hover {
+        border-color: #d94f4f;
+    }
+
+    #PopularPosts1 ul li {
+        margin-bottom: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 811px) {
+        aside {
+            position: sticky;
+            top: 24px;
+            align-self: flex-start;
+            max-height: calc(100vh - 48px);
+            overflow-y: auto;
+        }
+    }
+
+    @media (max-width: 810px) {
+        body {
+            margin: 10px;
+        }
+
+        header, #social-media, main, footer {
+            width: 100%;
+        }
+
+        #social-media {
+            width: 100%;
+        }
+
+        main {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        section, aside {
+            width: 100%;
+        }
+
+        .fa {
+            padding: 7px;
+            width: 38px;
+        }
+    }
+
+    /* Code and syntax highlighting */
+    .codeSection {
+        font-size:16px;
+        padding:0px;
+        margin:0px;
+    }
+
+    .fileName {
+        color:#c586c0;
+        margin-bottom:5px;
+        font-weight:600;
+        letter-spacing:0.03em;
+    }
+
+    .code {
+        line-height:1.6;
+        padding:15px;
+        overflow:auto;
+        color:#e6edf3;
+        background-color:#0d1117;
+        border-left:5px solid #30363d;
+        border-radius:4px;
+    }
+
+    pre {
+        margin:0px;
+        padding:0px;
+        font-family:Consolas, "Courier New", monospace;
+        -moz-tab-size:4;
+        -o-tab-size:4;
+        tab-size:4;
+    }
+
+    .lI {
+        color:#e6edf3;
+    }
+
+    .kC {
+        color:#ff7b72;
+    }
+
+    .cC {
+        color:#8b949e;
+    }
+
+    .qC { 
+        color:#a5d6ff;
+    }
+
+    .pC {
+        color:#c9d1d9;
+    }
+
+    .iPC {
+        color:#79c0ff;
+    }
+
+    .bC {
+        color:#c9d1d9;
+    }
+
+    .iBC {
+        color:#79c0ff;
+    }
+    ]]></b:skin>
+    <b:if cond='data:blog.title != "Story of Algorithm"'>
+        <style>
+        body { background-color:white; }
+        </style>
+    </b:if>
+</head>
+<body>
+    <header>
+        <a expr:href='data:blog.homepageUrl'><data:blog.title/></a>
+    </header>
+    <div id='social-media'>
+        <!-- Add social media links -->
+        <span style='background-color: var(--highcolor);'>
+            <a href='' target='_blank' title='Follow Twitter' class='fa'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+            <path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z"></path>
+            </svg></a>
+            <a href='' target='_blank' title='Follow Facebook' class='fa'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+            <path d="M16,2c-7.732,0-14,6.268-14,14,0,6.566,4.52,12.075,10.618,13.588v-9.31h-2.887v-4.278h2.887v-1.843c0-4.765,2.156-6.974,6.835-6.974,.887,0,2.417,.174,3.043,.348v3.878c-.33-.035-.904-.052-1.617-.052-2.296,0-3.183,.87-3.183,3.13v1.513h4.573l-.786,4.278h-3.787v9.619c6.932-.837,12.304-6.74,12.304-13.897,0-7.732-6.268-14-14-14Z"></path>
+            </svg></a>
+            <a href='' target='_blank' title='Follow Tumblr' class='fa'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+            <path d="M18.5,30c-4.211,0-7.349-2.166-7.349-7.349V14.35h-3.827v-4.495c4.211-1.094,5.972-4.717,6.175-7.856h4.373v7.127h5.102v5.224h-5.102v7.228c0,2.166,1.094,2.915,2.834,2.915h2.47v5.507h-4.677Z"></path>
+            </svg></a>
+            <a href='' target='_blank' title='Follow Reddit' class='fa'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+            <path d="M27.332,10.323c-1.07,0-2.055,.361-2.842,.967-2.143-1.326-4.848-2.16-7.807-2.271v-.013c0-1.983,1.474-3.629,3.386-3.9v-.003c.347,1.47,1.666,2.564,3.242,2.564,1.84,0,3.331-1.491,3.331-3.331s-1.491-3.331-3.331-3.331c-1.609,0-2.95,1.14-3.262,2.657-2.694,.289-4.798,2.574-4.798,5.343v.017c-2.93,.123-5.605,.957-7.729,2.274-.789-.611-1.779-.974-2.853-.974-2.578,0-4.668,2.09-4.668,4.668,0,1.871,1.099,3.483,2.688,4.228,.155,5.419,6.06,9.778,13.323,9.778s13.176-4.364,13.323-9.787c1.576-.75,2.666-2.357,2.666-4.217,0-2.578-2.09-4.668-4.668-4.668ZM7.334,17.952c.078-1.693,1.203-2.992,2.51-2.992s2.307,1.373,2.229,3.066c-.078,1.693-1.054,2.308-2.363,2.308s-2.453-.689-2.375-2.382Zm13.596,4.424c-.804,1.922-2.703,3.273-4.919,3.273s-4.114-1.351-4.919-3.273c-.095-.228,.061-.483,.306-.508,1.437-.145,2.991-.225,4.613-.225s3.175,.08,4.613,.225c.245,.025,.401,.28,.306,.508Zm1.384-2.043c-1.307,0-2.285-.614-2.363-2.308-.078-1.693,.92-3.066,2.229-3.066s2.433,1.299,2.51,2.992c.078,1.693-1.068,2.382-2.375,2.382Z"></path>
+            </svg></a> 
+            <a href='' target='_blank' title='Follow Github' class='fa'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+            <path d="M16,2.345c7.735,0,14,6.265,14,14-.002,6.015-3.839,11.359-9.537,13.282-.7,.14-.963-.298-.963-.665,0-.473,.018-1.978,.018-3.85,0-1.312-.437-2.152-.945-2.59,3.115-.35,6.388-1.54,6.388-6.912,0-1.54-.543-2.783-1.435-3.762,.14-.35,.63-1.785-.14-3.71,0,0-1.173-.385-3.85,1.435-1.12-.315-2.31-.472-3.5-.472s-2.38,.157-3.5,.472c-2.677-1.802-3.85-1.435-3.85-1.435-.77,1.925-.28,3.36-.14,3.71-.892,.98-1.435,2.24-1.435,3.762,0,5.355,3.255,6.563,6.37,6.913-.403,.35-.77,.963-.893,1.872-.805,.368-2.818,.963-4.077-1.155-.263-.42-1.05-1.452-2.152-1.435-1.173,.018-.472,.665,.017,.927,.595,.332,1.277,1.575,1.435,1.978,.28,.787,1.19,2.293,4.707,1.645,0,1.173,.018,2.275,.018,2.607,0,.368-.263,.787-.963,.665-5.719-1.904-9.576-7.255-9.573-13.283,0-7.735,6.265-14,14-14Z"></path>
+            </svg></a>
+        </span>
+    </div>
+    <main>
+        <section>
+            <b:section id='content-section'>
+                <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+                    <b:includable id='main'>
+                        <b:loop values='data:posts' var='post'>
+                            <article>
+                                <b:if cond='data:blog.pageType == "index"'>
+                                <h2><a expr:href='data:post.url' rel='follow'><data:post.title/></a></h2>
+                                <b:else/>
+                                <h1><data:post.title/></h1>
+                                </b:if>
+                                <div class='post-date'><span class='post-date-icon'>●</span><data:post.timestamp/></div>
+                                <data:post.body/>
+                                <b:if cond='data:blog.pageType == "item"'>
+                                <script type='application/ld+json'>
+                                {
+                                    "@context": "https://schema.org",
+                                    "@type": "BlogPosting",
+                                    "mainEntityOfPage": {
+                                        "@type": "WebPage",
+                                        "@id": "<data:post.url/>"
+                                    },
+                                    "headline": "<data:post.title.jsonEscaped/>",
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": "<data:post.author.name/>"
+                                    },
+                                    "publisher": {
+                                        "@type": "Organization",
+                                        "name": "<data:blog.title.jsonEscaped/>"
+                                    },
+                                    "datePublished": "<data:post.timestampISO8601/>",
+                                    "dateModified": "<data:post.timestampISO8601/>"
+                                }
+                                </script>
+                                </b:if>
+                            </article>
+                        </b:loop>
+                        <div id='blog-pager'>
+                            <b:if cond='data:newerPageUrl'>
+                                <span id='blog-pager-newer-link'>								
+                                    <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' rel='follow' title='Newer Post'>Newer Post</a>
+                                </span>
+                            </b:if>
+                            <b:if cond='data:olderPageUrl'>
+                                <span id='blog-pager-older-link'>
+                                    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' rel='follow' title='Older Post'>Older Post</a>
+                                </span>
+                            </b:if>
+                            <a class='home-link' expr:href='data:blog.homepageUrl' rel='follow'>Home</a>
+                        </div>
+                    </b:includable>
+                </b:widget>
+            </b:section>
+        </section>
+        <aside>
+            <div class='side-bar'>            
+                <h3>Search</h3>
+                <form expr:action='data:blog.searchUrl' id='uform' target='_top'>
+                    <input type='text' id='usearch' placeholder='Search' name='q' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' autocomplete='off'/>
+                </form>
+            </div>
+            <div class='side-bar'>
+                <h3>Popular Posts</h3>
+                <b:section id='popularpost-section'>
+                    <b:widget id='PopularPosts1' locked='true' title='' type='PopularPosts' version='1'>
+                        <b:includable id='main'>
+                            <ul>
+                                <b:loop values='data:posts' var='post'>
+                                    <li><a expr:href='data:post.href'><data:post.title/></a></li>
+                                </b:loop>
+                            </ul>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </div>
+            <div class='side-bar'>
+                <h3>Label</h3>
+                <b:section id='label-section'>
+                    <b:widget id='Label1' locked='true' title='Labels' type='Label' version='1'>
+                        <b:includable id='main'>
+                            <ul>
+                                <b:loop values='data:labels' var='label'>
+                                    <li><a class='label' expr:dir='data:blog.languageDirection' expr:href='data:label.url'><data:label.name/> (<data:label.count/>)</a></li>
+                                </b:loop>
+                            </ul>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </div>
+        </aside>
+    </main>
+    <footer>
+            Copyright &#9400; <data:blog.title/>. All rights reserved.
+    </footer>
+</body>
+</html>    
